@@ -1,7 +1,7 @@
 {
-  "name": "90ta-supermarket-rescue",
+  "name": "food4u-supermarket-rescue",
   "version": "1.0.0",
-  "description": "90TA - AI-Powered Supermarket Surplus Rescue & B2B Commercial Clearance Platform",
+  "description": "FOOD4U - AI-Powered Supermarket Surplus Rescue & B2B Commercial Clearance Platform",
   "license": "MIT",
   "type": "module",
   "scripts": {

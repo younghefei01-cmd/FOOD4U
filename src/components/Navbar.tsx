@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
     {
       id: 'ai_agent',
       label: 'AI Match Agent',
-      labelZh: '90TA AI 智能匹配',
+      labelZh: 'FOOD4U AI 智能匹配',
       icon: <Sparkles className="w-4 h-4 mr-1.5 text-amber-500" />
     },
     {
@@ -84,12 +84,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
               onClick={() => setActiveTab('store_ops')}
               className="text-left group flex items-center gap-2.5 focus:outline-none"
             >
-              <div className="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-sm font-black text-sm tracking-tighter">
-                90TA
+              <div className="w-10 h-9 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-sm font-black text-xs tracking-tight">
+                FOOD4U
               </div>
               <div>
                 <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white whitespace-nowrap">
-                  90TA
+                  FOOD4U
                 </span>
                 <span className="hidden sm:inline-block ml-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">
                   {currency === 'RMB' ? 'AI商超清仓平台' : 'AI Surplus Rescue'}

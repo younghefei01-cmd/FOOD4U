@@ -842,7 +842,7 @@ export const StoreOperationsView: React.FC = () => {
             <div className="border-2 border-dashed border-emerald-600 p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 text-slate-900 dark:text-white space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black uppercase tracking-widest text-emerald-800 dark:text-emerald-400">
-                  90TA · 救食清仓标
+                  FOOD4U · 救食清仓标
                 </span>
                 <span className="text-[10px] font-mono bg-emerald-700 text-white px-2 py-0.5 rounded font-bold">
                   DO NOT SCAN AT CASHIER

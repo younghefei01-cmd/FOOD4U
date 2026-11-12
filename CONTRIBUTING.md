@@ -1,6 +1,6 @@
-# 贡献指南 (Contributing to 90TA)
+# 贡献指南 (Contributing to FOOD4U)
 
-感谢您对 90TA 项目的关注与支持！我们欢迎所有开发者、商超运营专家与环保倡导者共同参与建设。
+感谢您对 FOOD4U 项目的关注与支持！我们欢迎所有开发者、商超运营专家与环保倡导者共同参与建设。
 
 ## 提交问题 (Issue Reporting)
 
@@ -13,8 +13,8 @@
 1. **Fork** 本代码仓库到您的个人 GitHub 账户；
 2. 克隆您的 Fork 分支到本地：
    ```bash
-   git clone https://github.com/<your-username>/90TA.git
-   cd 90TA
+   git clone https://github.com/<your-username>/FOOD4U.git
+   cd FOOD4U
    ```
 3. 创建新的功能或修复分支：
    ```bash

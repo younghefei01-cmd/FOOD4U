@@ -23,13 +23,13 @@ export const ChinaPlaybookView: React.FC = () => {
 
   // Term Sheet copy / download
   const termSheetText = `====================================================================
-【90TA 超市试点合作协议 (Pilot Term Sheet / MOU)】
+【FOOD4U 超市试点合作协议 (Pilot Term Sheet / MOU)】
 ====================================================================
 甲方（商超试点方）：__________________________________
-乙方（平台运营方）：90TA 智能商超清仓平台
+乙方（平台运营方）：FOOD4U 智能商超清仓平台
 
 第一条 合作模式与范畴
-1. 甲方授权乙方在其指定试点门店建立“90TA 临期预包装商品数字化清仓专区”。
+1. 甲方授权乙方在其指定试点门店建立“FOOD4U 临期预包装商品数字化清仓专区”。
 2. 本次试点仅限于常温密封预包装食品（包括米面粮油、调味品、罐头、饮料等），严格排除散装熟食、冷鲜肉禽及破损罐头。
 3. 临期定义：严格按照国家市场监管标准，剩余保质期介于 30 至 60 天之内。
 
@@ -54,7 +54,7 @@ export const ChinaPlaybookView: React.FC = () => {
     const element = document.createElement('a');
     const file = new Blob([termSheetText], { type: 'text/plain;charset=utf-8' });
     element.href = URL.createObjectURL(file);
-    element.download = '90TA_Supermarket_Pilot_TermSheet_MOU.txt';
+    element.download = 'FOOD4U_Supermarket_Pilot_TermSheet_MOU.txt';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -287,7 +287,7 @@ export const ChinaPlaybookView: React.FC = () => {
                   ├── 85% 货款 ──&gt; 自动清算至【商超企业对公商户号】 (T+1 自动划拨至商超对公账户)
                 </div>
                 <div className="text-slate-800 dark:text-slate-200 pl-4">
-                  ├── 15% 佣金 ──&gt; 自动清算至【90TA 平台运营主体账户】 (平台出具 6% 技术服务费发票)
+                  ├── 15% 佣金 ──&gt; 自动清算至【FOOD4U 平台运营主体账户】 (平台出具 6% 技术服务费发票)
                 </div>
                 <div className="text-slate-800 dark:text-slate-200 pl-4">
                   └── 0.6% 手续费 ──&gt; 扣除微信/银行支付通道费

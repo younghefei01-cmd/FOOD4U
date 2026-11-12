@@ -132,7 +132,7 @@ export const AiMatchingAgentView: React.FC = () => {
         urgentShortage: `${profile.name} 根据历史周期模型，当前食材消耗进度达 ${Math.round(
           (profile.lastPurchasedDaysAgo / profile.consumptionCycleDays) * 100
         )}%，预计将在 24–48 小时内发生断货。`,
-        aiReasoning: `90TA AI Agent 算法自动对齐【${currentStore.name}】今日 07:00 早巡录入的 30–60 天临期库存。识别到与该客户历史高频菜单品类（${profile.targetedCategories.join(
+        aiReasoning: `FOOD4U AI Agent 算法自动对齐【${currentStore.name}】今日 07:00 早巡录入的 30–60 天临期库存。识别到与该客户历史高频菜单品类（${profile.targetedCategories.join(
           '、'
         )}）匹配度高达 96% 以上。主动生成锁库清单，预计可为客户降低 60% 采购支出，同时为商超提前锁定动销。`,
         recommendedBatches: recommended
@@ -163,13 +163,13 @@ export const AiMatchingAgentView: React.FC = () => {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-lg text-xs font-bold tracking-wide border border-emerald-500/30">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span>90TA 第三阶段技术核心 · AI Agent 主动食材匹配引擎</span>
+              <span>FOOD4U 第三阶段技术核心 · AI Agent 主动食材匹配引擎</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
               基于用户历史采购与消耗数据的主动匹配 Agent
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              告别传统“人找货”的被动浏览模式。90TA AI Agent 深度训练于餐饮客户与消费者的历史进货频次、菜单消耗速率与保质期容忍度，在商超早巡录入临期库存后，<strong>自动计算断货周期，主动将临期好物反向定向分发给最需要的买家</strong>。
+              告别传统“人找货”的被动浏览模式。FOOD4U AI Agent 深度训练于餐饮客户与消费者的历史进货频次、菜单消耗速率与保质期容忍度，在商超早巡录入临期库存后，<strong>自动计算断货周期，主动将临期好物反向定向分发给最需要的买家</strong>。
             </p>
           </div>
 
@@ -236,7 +236,7 @@ export const AiMatchingAgentView: React.FC = () => {
           <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
             <Bot className="w-5 h-5 text-emerald-600" />
             <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-              90TA AI Agent 深度决策报告
+              FOOD4U AI Agent 深度决策报告
             </h4>
           </div>
 

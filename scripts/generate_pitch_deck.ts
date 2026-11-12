@@ -6,9 +6,9 @@ async function generatePitchDeck() {
   const pptx = new pptxgen();
 
   pptx.layout = 'LAYOUT_16x9';
-  pptx.author = '90TA Founding Team';
-  pptx.company = '90TA Technologies';
-  pptx.title = '90TA - 商业路演计划书 (Pitch Deck)';
+  pptx.author = 'FOOD4U Founding Team';
+  pptx.company = 'FOOD4U Technologies';
+  pptx.title = 'FOOD4U - 商业路演计划书 (Pitch Deck)';
 
   // Color Palette
   const C_DARK = '0B132B';
@@ -37,10 +37,10 @@ async function generatePitchDeck() {
       rectRadius: 0.1,
       fill: { color: C_EMERALD }
     });
-    slide.addText('90TA · AI 驱动', {
+    slide.addText('FOOD4U · AI 驱动', {
       x: 0.8,
       y: 1.2,
-      w: 1.6,
+      w: 1.8,
       h: 0.5,
       align: 'center',
       valign: 'middle',
@@ -51,7 +51,7 @@ async function generatePitchDeck() {
     });
 
     // Main Title
-    slide.addText('90TA', {
+    slide.addText('FOOD4U', {
       x: 0.8,
       y: 1.9,
       w: 8.5,
@@ -248,7 +248,7 @@ async function generatePitchDeck() {
       {
         num: '01',
         title: '07:00 早巡扫码',
-        desc: '店员手持 90TA 软件扫描原厂 GTIN 条码，基于 30–60 天临期天数自动计算 4 折出库价与批次。'
+        desc: '店员手持 FOOD4U 软件扫描原厂 GTIN 条码，基于 30–60 天临期天数自动计算 4 折出库价与批次。'
       },
       {
         num: '02',
@@ -354,7 +354,7 @@ async function generatePitchDeck() {
       bold: true
     });
 
-    slide.addText('竞品格局全景：为什么 90TA 切入的是无人竞争的蓝海？', {
+    slide.addText('竞品格局全景：为什么 FOOD4U 切入的是无人竞争的蓝海？', {
       x: 0.8,
       y: 0.8,
       w: 11.0,
@@ -370,7 +370,7 @@ async function generatePitchDeck() {
       { text: '对比维度', options: { bold: true, fill: { color: 'E2E8F0' }, color: C_DARK } },
       { text: '线下硬折扣店 (好特卖/嗨特购)', options: { bold: true, fill: { color: 'E2E8F0' }, color: C_DARK } },
       { text: '线上剩菜盲盒 (惜食魔法袋)', options: { bold: true, fill: { color: 'E2E8F0' }, color: C_DARK } },
-      { text: '90TA 智能清仓平台', options: { bold: true, fill: { color: 'D1FAE5' }, color: '065F46' } }
+      { text: 'FOOD4U 智能清仓平台', options: { bold: true, fill: { color: 'D1FAE5' }, color: '065F46' } }
     ];
 
     const rows = [
@@ -921,7 +921,7 @@ async function generatePitchDeck() {
     fs.mkdirSync(publicDir, { recursive: true });
   }
 
-  const outputPath = path.resolve(publicDir, '90TA_Investor_Pitch_Deck_8Pages.pptx');
+  const outputPath = path.resolve(publicDir, 'FOOD4U_Investor_Pitch_Deck_8Pages.pptx');
   await pptx.writeFile({ fileName: outputPath });
   console.log(`Successfully generated pitch deck at: ${outputPath}`);
 }

@@ -62,9 +62,6 @@
 - **全球合规资质矩阵**：企业商业注册 (LLC / Inc. / Ltd.)、商用食品经营设施许可 (Commercial Food Facility Registration)、平台撮合服务条款 (Terms of Service)；
 - **标准化合作协议**：内置《商超试点合作协议 (Global Pilot Term Sheet / MOU)》草案。
 
-### 6. 📊 自动化投资人路演 PPT 生成器 (Investor Pitch Deck Generator)
-- 内置 `scripts/generate_pitch_deck.ts`，基于 `pptxgenjs` 一键编译输出专用的 **8页高保真投资人路演 PPTX 文件**，可在 PowerPoint / Keynote / WPS 中无损编辑与演示。
-
 ---
 
 ## 🛠️ 技术架构与数据模型
@@ -72,7 +69,6 @@
 ### 技术栈 (Tech Stack)
 - **前端框架**：React 19 + TypeScript + Vite 6
 - **样式与设计系统**：Tailwind CSS v4 + Lucide Icons + Motion
-- **文档与呈现引擎**：PptxGenJS (OpenXML PPTX 自动生成)
 - **状态管理**：React Context API + LocalStorage 实时持久化
 
 ### 核心数据库表结构设计 (Database Schema)
@@ -179,11 +175,22 @@ npm run dev
 npm run build
 ```
 
-### 5. 生成 8 页投资人商业策划书路演 PPT (.pptx)
-```bash
-npx tsx scripts/generate_pitch_deck.ts
-```
-生成的文件将位于 `public/FOOD4U_Investor_Pitch_Deck_8Pages.pptx`。
+---
+
+## 🌐 在线网页预览与一键托管部署 (Live Web Preview & Hosting)
+
+本项目为基于 React 19 + Vite 6 构建的高性能纯前端 SPA，已在 `vite.config.ts` 中配置相对基准路径（`base: './'`），可**零成本 100% 免费**托管在任一主流平台：
+
+### 方案 1：GitHub Pages 自动化托管（推荐）
+本项目已在 `.github/workflows/deploy.yml` 内置官方 GitHub Actions 自动化部署流水线：
+1. 将项目代码 Push 到 GitHub 仓库（或使用 AI Studio 右侧的 **Sync to GitHub**）；
+2. 打开 GitHub 仓库页面，点击顶部 **Settings** ➔ **Pages**；
+3. 在 **Build and deployment** 下方的 **Source** 下拉菜单中，选择 **`GitHub Actions`**；
+4. 随后每次代码提交推送至 `main` 分支，GitHub Actions 将全自动编译并部署，几秒钟后即可在 `https://<你的GitHub用户名>.github.io/<仓库名>/` 在线打开完整网页！
+
+### 方案 2：Vercel / Cloudflare Pages / Netlify 极速托管
+- **Vercel**：登录 [vercel.com](https://vercel.com)，点击 **Add New Project**，直接选择该 GitHub 仓库，框架预设选择 **Vite**，点击 **Deploy** 即可获得全球高速 CDN 访问链接；
+- **Cloudflare Pages**：在 Cloudflare 控制台选择 Pages ➔ 连接 GitHub 仓库 ➔ 构建命令填 `npm run build`，输出目录填 `dist` 即可。
 
 ---
 
@@ -199,7 +206,7 @@ npx tsx scripts/generate_pitch_deck.ts
 - [x] **第三阶段：FOOD4U AI Agent 智能匹配系统**
   - [x] 基于商户历史采购频次的食材消耗周期建模
   - [x] 24-48小时断料预警算法与实时供给匹配雷达
-  - [x] 投资人专属 8 页路演商业策划书 PPT 自动化生成引擎
+  - [x] 中英文交互式开源项目文档内嵌阅读器与双向切换
 - [ ] **未来规划**
   - [ ] 接入主流商超 ERP / WMS 系统的每日自动盘点 Delta 同步 API
   - [ ] 权威第三方碳减排计量认证标准（如 CCER / Verra 碳积分挂钩）

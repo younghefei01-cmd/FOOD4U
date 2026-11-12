@@ -82,7 +82,6 @@ Food waste is an escalating global crisis. Under the macro-imperative of **Unite
 ### Tech Stack
 - **Frontend**: React 19, TypeScript, Tailwind CSS v4, Lucide Icons, Motion
 - **Build Tooling & Server**: Vite 6, Node.js, Express
-- **Presentation Engine**: PptxGenJS (compiles open-XML `.pptx` decks on the fly)
 - **State Management**: React Context API with LocalStorage replication
 
 ### Core Database Schema (PostgreSQL DDL)
@@ -195,11 +194,22 @@ Open your browser and navigate to `http://localhost:3000`.
 npm run build
 ```
 
-### 5. Generate Investor Pitch Deck (.pptx)
-```bash
-npx tsx scripts/generate_pitch_deck.ts
-```
-The compiled presentation will be output to `public/FOOD4U_Investor_Pitch_Deck_8Pages.pptx`.
+---
+
+## 🌐 Live Web Preview & One-Click Hosting Guide
+
+FOOD4U is engineered as a high-performance, purely client-side React 19 + Vite 6 Single Page Application. It has been configured with relative asset URLs (`base: './'` in `vite.config.ts`), enabling **100% free hosting on any static cloud provider**:
+
+### Option 1: GitHub Pages via Automated GitHub Actions (Recommended)
+This repository includes a pre-configured GitHub Actions workflow at `.github/workflows/deploy.yml`:
+1. Push your repository to GitHub (or use AI Studio's **Sync to GitHub** feature);
+2. Go to your GitHub repository and navigate to **Settings** ➔ **Pages**;
+3. Under **Build and deployment**, change the **Source** dropdown to **`GitHub Actions`**;
+4. On every push to the `main` branch, GitHub Actions will automatically compile and deploy your live web application to `https://<your-username>.github.io/<repo-name>/`.
+
+### Option 2: Vercel / Cloudflare Pages / Netlify (Instant)
+- **Vercel**: Visit [vercel.com](https://vercel.com), click **Add New Project**, import your GitHub repository, verify Framework Preset is set to **Vite**, and click **Deploy**.
+- **Cloudflare Pages**: In the Cloudflare Dashboard, select **Pages** ➔ **Connect GitHub** ➔ Build command: `npm run build`, Output directory: `dist`.
 
 ---
 
@@ -215,7 +225,7 @@ The compiled presentation will be output to `public/FOOD4U_Investor_Pitch_Deck_8
 - [x] **Phase 3: FOOD4U AI Matching Agent**
   - [x] Autonomous consumption velocity & depletion modeling
   - [x] 24–48h stockout prediction radar with real-time supply matching
-  - [x] Automated 8-slide investor pitch deck compilation engine
+  - [x] Interactive bilingual Readme reader with 1-click English/Chinese switching
 - [ ] **Future Horizons**
   - [ ] Automated delta-sync webhooks for SAP Retail, Oracle NetSuite & Microsoft Dynamics ERPs
   - [ ] Integration with certified carbon crediting frameworks (Verra / Gold Standard)

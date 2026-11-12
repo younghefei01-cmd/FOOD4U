@@ -226,8 +226,8 @@ export const DocViewerModal: React.FC<DocViewerModalProps> = ({
                   <div>npm install</div>
                   <div className="text-slate-500 pt-1"># 2. 启动开发服务 (访问 http://localhost:3000)</div>
                   <div>npm run dev</div>
-                  <div className="text-slate-500 pt-1"># 3. 生成 8 页投资人演示文稿 PPTX</div>
-                  <div>npx tsx scripts/generate_pitch_deck.ts</div>
+                  <div className="text-slate-500 pt-1"># 3. 编译生产构建 (Production Build)</div>
+                  <div>npm run build</div>
                 </div>
               </section>
             </div>
@@ -354,8 +354,8 @@ export const DocViewerModal: React.FC<DocViewerModalProps> = ({
                   <div>npm install</div>
                   <div className="text-slate-500 pt-1"># 2. Start local dev server (visit http://localhost:3000)</div>
                   <div>npm run dev</div>
-                  <div className="text-slate-500 pt-1"># 3. Generate 8-slide investor pitch deck</div>
-                  <div>npx tsx scripts/generate_pitch_deck.ts</div>
+                  <div className="text-slate-500 pt-1"># 3. Build for production</div>
+                  <div>npm run build</div>
                 </div>
               </section>
             </div>

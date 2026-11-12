@@ -708,8 +708,8 @@ CREATE TABLE orders (
                     <div>cd FOOD4U && npm install</div>
                     <div className="text-slate-500 pt-2"># 2. Launch Vite development server on port 3000</div>
                     <div className="text-emerald-400">npm run dev</div>
-                    <div className="text-slate-500 pt-2"># 3. Generate 8-slide Investor Pitch Deck (.pptx)</div>
-                    <div className="text-emerald-400">npx tsx scripts/generate_pitch_deck.ts</div>
+                    <div className="text-slate-500 pt-2"># 3. Compile production build</div>
+                    <div className="text-emerald-400">npm run build</div>
                   </div>
                 </div>
               </div>
@@ -854,8 +854,8 @@ CREATE TABLE orders (
                     <div>cd FOOD4U && npm install</div>
                     <div className="text-slate-500 pt-2"># 2. 启动开发服务 (访问 http://localhost:3000)</div>
                     <div className="text-emerald-400">npm run dev</div>
-                    <div className="text-slate-500 pt-2"># 3. 生成 8 页投资人演示文稿 PPTX</div>
-                    <div className="text-emerald-400">npx tsx scripts/generate_pitch_deck.ts</div>
+                    <div className="text-slate-500 pt-2"># 3. 编译生产构建 (Production Build)</div>
+                    <div className="text-emerald-400">npm run build</div>
                   </div>
                 </div>
               </div>

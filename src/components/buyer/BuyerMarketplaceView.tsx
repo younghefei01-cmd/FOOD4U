@@ -478,7 +478,7 @@ export const BuyerMarketplaceView: React.FC<BuyerMarketplaceViewProps> = ({
                 <ShieldAlert className="w-3.5 h-3.5" />
                 <span>
                   {currency === 'RMB'
-                    ? '《反食品浪费法》合规与临期说明'
+                    ? '国际食品减损法规与最佳赏味期说明'
                     : 'Food Surplus Liquidation Terms'}
                 </span>
               </div>

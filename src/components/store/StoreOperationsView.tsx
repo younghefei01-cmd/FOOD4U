@@ -738,7 +738,7 @@ export const StoreOperationsView: React.FC = () => {
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
               {currency === 'RMB'
-                ? '严格处于 30–60 天临期安全期内，满足《反食品浪费法》规范'
+                ? '严格处于 30–60 天临期安全期内，符合国际 Best-Before 减损规范'
                 : 'Compliant with 30-60 day durability markdown guidelines'}
             </p>
           </div>

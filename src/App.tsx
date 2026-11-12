@@ -58,7 +58,7 @@ const AppContent: React.FC = () => {
             </span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>《反食品浪费法》合规指引</span>
+            <span>UN SDG 12.3 全球食品减损准则</span>
             <span>·</span>
             <span>Bill Emerson Good Samaritan Act</span>
             <span>·</span>

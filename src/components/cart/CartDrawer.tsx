@@ -39,8 +39,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   const [buyerType, setBuyerType] = useState<BuyerType>('B2B');
   const [buyerName, setBuyerName] = useState<string>('Chef Marco / 王厨师长');
-  const [buyerOrg, setBuyerOrg] = useState<string>('Pudong Cloud Kitchen / 浦东云厨房餐饮');
-  const [paymentMethod, setPaymentMethod] = useState<string>('WeChat_Pay_Escrow');
+  const [buyerOrg, setBuyerOrg] = useState<string>('Artisan Kitchen Group / 品牌餐饮厨房');
+  const [paymentMethod, setPaymentMethod] = useState<string>('Stripe_Connect_Escrow');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -286,14 +286,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       onChange={(e) => setPaymentMethod(e.target.value)}
                       className="w-full px-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white"
                     >
-                      <option value="WeChat_Pay_Escrow">
-                        {currency === 'RMB' ? '微信支付·电商收付通 (商超分账托管)' : 'WeChat Pay Escrow (Automated Split)'}
+                      <option value="Stripe_Connect_Escrow">
+                        {currency === 'RMB' ? 'Stripe Connect 托管分账通道 (国际商超直结)' : 'Stripe Connect Escrow (Automated Split)'}
                       </option>
-                      <option value="Alipay_Direct_Pay">
-                        {currency === 'RMB' ? '支付宝·互联网平台直付通 (资金存管)' : 'Alipay Direct Split Escrow'}
+                      <option value="Adyen_Platforms_Escrow">
+                        {currency === 'RMB' ? 'Adyen for Platforms 全球多币种清算通道' : 'Adyen for Platforms Multi-Currency Escrow'}
                       </option>
-                      <option value="Bank_Virtual_Account">
-                        {currency === 'RMB' ? '商业银行二类电子账户资金存管' : 'Commercial Bank Escrow Account'}
+                      <option value="Commercial_Bank_Escrow">
+                        {currency === 'RMB' ? '国际一级商业银行监管专户 (Tier-1 Escrow)' : 'Tier-1 Commercial Bank Regulated Escrow'}
                       </option>
                     </select>
                   </div>

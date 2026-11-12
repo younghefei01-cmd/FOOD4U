@@ -542,7 +542,7 @@ export const FINANCIAL_BENCHMARKS = {
       name: 'Retailer Enterprise Analytics',
       nameZh: '连锁商超企业端防损与 ESG SaaS',
       structure: '$150/store/month (or ¥800/store/mo) for chains wanting predictive waste analytics, automated expiry markdown schedules, and certified ESG audit reports.',
-      structureZh: '针对大型连锁集团收取 ¥800/店/月 ($150/店/月)，输出《反食品浪费法》合规审计证书与智能折价算法。'
+      structureZh: '针对大型连锁商超集团收取 $150/店/月 (约 ¥800/店/月)，输出 UN SDG 12.3 减损合规审计证书与智能动态折价算法。'
     }
   ]
 };

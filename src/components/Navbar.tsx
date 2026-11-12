@@ -66,8 +66,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
     },
     {
       id: 'china_playbook',
-      label: 'China Strategy & Legal',
-      labelZh: '合规与落地智库',
+      label: 'Global Strategy & Legal',
+      labelZh: '全球合规智库',
       icon: <BookOpen className="w-4 h-4 mr-1.5" />
     }
   ];

@@ -75,7 +75,7 @@ async function generatePitchDeck() {
     });
 
     // Value Proposition Statement
-    slide.addText('“将中国商超后仓 1,500 亿倾倒报损，转化为高确定性现金流与绿色减碳飞轮”', {
+    slide.addText('“将全球商超后仓数千亿美元倾倒报损，转化为高确定性现金流与绿色减碳飞轮”', {
       x: 0.8,
       y: 3.8,
       w: 11.0,
@@ -158,9 +158,9 @@ async function generatePitchDeck() {
         titleColor: '92400E'
       },
       {
-        title: '政策端：法律硬约束',
-        stat: '反食品浪费法',
-        desc: '• 《反食品浪费法》在全国强力推行\n• 强制商超建立临期食品管理台账\n• 倾倒报损面临高额行政处罚风险\n• 上市零售集团迫切需要 ESG 减碳审计',
+        title: '全球政策红利与法规',
+        stat: 'UN SDG 12.3',
+        desc: '• 联合国可持续发展目标 2030 减损指标\n• 欧美等多国法律严禁商超倾倒填埋食品\n• 适用好撒玛利亚人法律责任豁免机制\n• 跨国零售集团迫切需要 ESG 减碳审计',
         color: 'DCFCE7',
         border: '86EFAC',
         titleColor: '166534'
@@ -719,7 +719,7 @@ async function generatePitchDeck() {
       line: { color: 'CBD5E1', width: 1 }
     });
 
-    slide.addText('资金分账与资质牌照（规避“二清”）', {
+    slide.addText('国际银行级托管分账与合规资质架构', {
       x: 1.1,
       y: 1.85,
       w: 5.0,
@@ -731,12 +731,12 @@ async function generatePitchDeck() {
     });
 
     slide.addText([
-      { text: '• 微信“电商收付通” / 商业银行二级监管账户\n', options: { bold: true, color: C_DARK } },
-      { text: '买家付款 100% 直达存管专户，平台不触碰沉淀资金，彻底杜绝资金池二清风险。\n\n', options: { color: C_MUTED } },
-      { text: '• 自动 T+1 分账指令划拨\n', options: { bold: true, color: C_DARK } },
-      { text: '扫码核销后触发系统指令：85% 货款划拨商超对公账户，15% 技术服务费划拨平台，开具 6% 增值税专票。\n\n', options: { color: C_MUTED } },
-      { text: '• 必备行政许可四件套齐全\n', options: { bold: true, color: C_DARK } },
-      { text: '营业执照、预包装食品销售备案、EDI 增值电信许可证 (B21 类)、微信平台审核。', options: { color: C_MUTED } }
+      { text: '• Stripe Connect / 国际持牌信托托管监管账户\n', options: { bold: true, color: C_DARK } },
+      { text: '买家付款 100% 直达监管专户，平台零沉淀资金，符合 FinCEN/PSD2 严格合规标准。\n\n', options: { color: C_MUTED } },
+      { text: '• 自动 T+1/T+2 分账指令划拨\n', options: { bold: true, color: C_DARK } },
+      { text: '扫码核销后触发系统指令：85% 货款划拨商超商业账户，15% 技术服务费划拨平台，出具正式 Invoice。\n\n', options: { color: C_MUTED } },
+      { text: '• 必备国际合规资质体系健全\n', options: { bold: true, color: C_DARK } },
+      { text: '企业商业注册 (LLC/Ltd)、食品设施备案 (FDA/EFSA)、平台型居间服务协议 (ToS)。', options: { color: C_MUTED } }
     ], {
       x: 1.1,
       y: 2.3,
@@ -758,7 +758,7 @@ async function generatePitchDeck() {
       line: { color: 'CBD5E1', width: 1 }
     });
 
-    slide.addText('食品安全与食物中毒责任兜底机制', {
+    slide.addText('食品安全与好撒玛利亚人法律责任豁免机制', {
       x: 7.1,
       y: 1.85,
       w: 5.0,
@@ -772,8 +772,8 @@ async function generatePitchDeck() {
     slide.addText([
       { text: '1. 坚决执行常温“负面清单”\n', options: { bold: true, color: C_DARK } },
       { text: '100% 仅限工厂密封常温标品，严禁散装熟食、冷鲜生肉生禽，从源头绝缘食物变质风险。\n\n', options: { color: C_MUTED } },
-      { text: '2. 商业“食品安全责任险 (食责险)”兜底\n', options: { bold: true, color: C_DARK } },
-      { text: '全平台每笔订单标配 PICC/平安食责险，单次事故最高赔付 50–100 万元，商超零连带赔偿担忧。\n\n', options: { color: C_MUTED } },
+      { text: '2. 商业“全球产品责任险 (Product Liability)”兜底\n', options: { bold: true, color: C_DARK } },
+      { text: '全平台每笔订单标配 Allianz/Chubb 国际商业产品责任险，最高提供 100–200 万美元保障。\n\n', options: { color: C_MUTED } },
       { text: '3. 当面验货 + 1 键无理由退款\n', options: { bold: true, color: C_DARK } },
       { text: '码头交接时当面核验外箱，发现受潮破损手机端 1 键发起原路全额退款，问题商品不出店。', options: { color: C_MUTED } }
     ], {

@@ -23,28 +23,29 @@ export const ChinaPlaybookView: React.FC = () => {
 
   // Term Sheet copy / download
   const termSheetText = `====================================================================
-【FOOD4U 超市试点合作协议 (Pilot Term Sheet / MOU)】
+【FOOD4U 全球商超试点合作协议 (Global Pilot Term Sheet / MOU)】
 ====================================================================
 甲方（商超试点方）：__________________________________
-乙方（平台运营方）：FOOD4U 智能商超清仓平台
+乙方（平台运营方）：FOOD4U 智能商超清仓平台 (FOOD4U Technologies Inc.)
 
-第一条 合作模式与范畴
+第一条 合作模式与范畴 (Scope of Cooperation)
 1. 甲方授权乙方在其指定试点门店建立“FOOD4U 临期预包装商品数字化清仓专区”。
-2. 本次试点仅限于常温密封预包装食品（包括米面粮油、调味品、罐头、饮料等），严格排除散装熟食、冷鲜肉禽及破损罐头。
-3. 临期定义：严格按照国家市场监管标准，剩余保质期介于 30 至 60 天之内。
+2. 本次试点仅限于常温密封预包装食品（包括米面粮油、调味品、罐头、常温饮料等），严格排除散装熟食、冷鲜肉禽及破损罐头。
+3. 临期界定：严格按照国际通行标准，处于最佳赏味期（Best-Before / Best-By）剩余 30 至 60 天之内。
 
-第二条 结算机制与佣金抽成
-1. 结算采用持牌第三方机构（微信支付“电商收付通” / 商业银行二级存管）进行资金托管。
+第二条 资金托管机制与佣金抽成 (Payment Escrow & Split)
+1. 结算采用国际一级持牌机构（Stripe Connect / 跨国商业银行二级监管专户）进行资金托管，平台不触碰沉淀资金。
 2. 交易佣金：乙方按实际核销成交金额的 15% 计提技术服务费；甲方实得 85%。
-3. T+1 日自动清算至甲方对公银行账户，乙方出具 6% 增值税专用发票（信息技术服务费）。
+3. T+1 / T+2 日自动清算至甲方商业银行对公账户，系统每晚自动输出 ERP 报损对账单 (Reconciliation File)。
 
-第三条 履约动线与自提时间
-1. B2B 商业大宗订单（整箱）：由买家于每日早间 07:30 - 09:30 前往甲方后门货运装卸码头核销自提，不占用前台收银通道。
+第三条 履约动线与自提时间 (Dock Pickup & Counter SOP)
+1. B2B 商业大宗订单（整箱）：由买家于每日早间 07:30 - 09:30 前往甲方后门货运装卸码头（Loading Dock）核销自提，不占用前台收银通道。
 2. B2C 个人散单订单：由买家于甲方总服务台凭数字提货码自提。
 
-第四条 食品安全与风控兜底
-1. 乙方负责为试点项目统一部署商业“食品安全责任险（食责险）”。
-2. 现场交接实行当面验货，发现严重外箱破损或胀气，门店手持端实行 1 键无理由原路退款。
+第四条 食品安全与全球风控兜底 (Food Safety & Good Samaritan Shield)
+1. 适用国际通行的《好撒玛利亚人法》(Bill Emerson Good Samaritan Act) 法律责任豁免机制。
+2. 乙方负责为试点项目统一部署商业“全球食品产品责任险 (Commercial Product Liability Insurance)”。
+3. 现场交接实行当面验货，发现严重外箱破损或胀气，门店手持端实行 1 键无理由原路退款。
 
 甲方盖章代表：_________________    乙方盖章代表：_________________
 签署日期：2026年___月___日        签署日期：2026年___月___日
@@ -54,7 +55,7 @@ export const ChinaPlaybookView: React.FC = () => {
     const element = document.createElement('a');
     const file = new Blob([termSheetText], { type: 'text/plain;charset=utf-8' });
     element.href = URL.createObjectURL(file);
-    element.download = 'FOOD4U_Supermarket_Pilot_TermSheet_MOU.txt';
+    element.download = 'FOOD4U_Global_Supermarket_Pilot_MOU.txt';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -68,33 +69,33 @@ export const ChinaPlaybookView: React.FC = () => {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-0.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold rounded-md">
-                China Market Strategy & Playbook
+                Global Market Strategy & Regulatory Playbook
               </span>
               <span className="text-slate-300 dark:text-slate-700">·</span>
               <span className="text-xs text-slate-500 font-medium">
-                《中华人民共和国反食品浪费法》合规落地实操
+                联合国 UN SDG 12.3 全球食品减损战略与实操指引
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
               {currency === 'RMB'
-                ? '中国商业落地智库：成本、牌照、风控、大卖场结算与获客'
-                : 'China Operational Playbook: Economics, Licensing, Risk & Retailer Settlement'}
+                ? '全球商超落地智库：经济模型、法务豁免、银行托管、国际收单与商业获客'
+                : 'Global Operational Playbook: Economics, Licensing, Risk & Multi-Currency Settlement'}
             </h2>
           </div>
         </div>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl">
-          针对商超合作准入、食品安全责任规避、微信/支付宝资金合规分账、增值电信牌照办理，以及第一阶段为什么必须以 B2B 餐饮大宗为突破口提供完整实施指南。
+          针对全球大型连锁商超合作准入、欧美《好撒玛利亚人法案》(Good Samaritan Acts) 责任豁免、Stripe Connect / Adyen 银行级资金分账托管、跨国食品责任险，以及第一阶段为什么必须以 B2B 餐饮大宗为突破口提供完整实施指南。
         </p>
 
         {/* Navigation Tabs */}
         <div className="flex items-center gap-2 pt-4 border-t border-slate-100 dark:border-slate-800 overflow-x-auto">
           {[
             { id: 'b2b_strategy', label: '1. 为什么 B2B 破局第一阶段', icon: <Users className="w-3.5 h-3.5" /> },
-            { id: 'risk', label: '2. 食品安全与中毒风控措施', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
-            { id: 'settlement', label: '3. 合作大卖场银行结算分账', icon: <CreditCard className="w-3.5 h-3.5" /> },
-            { id: 'licenses', label: '4. 必须取得的牌照四件套', icon: <Scale className="w-3.5 h-3.5" /> },
-            { id: 'growth', label: '5. 低成本宣传与获客打法', icon: <Compass className="w-3.5 h-3.5" /> },
-            { id: 'term_sheet', label: '6. 商超试点合作协议 (Term Sheet)', icon: <FileText className="w-3.5 h-3.5" /> }
+            { id: 'risk', label: '2. 食品安全与好撒玛利亚人法案', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
+            { id: 'settlement', label: '3. 全球大卖场银行托管分账', icon: <CreditCard className="w-3.5 h-3.5" /> },
+            { id: 'licenses', label: '4. 国际展业合规资质四件套', icon: <Scale className="w-3.5 h-3.5" /> },
+            { id: 'growth', label: '5. 低成本宣传与全球获客打法', icon: <Compass className="w-3.5 h-3.5" /> },
+            { id: 'term_sheet', label: '6. 全球商超试点协议 (Global MOU)', icon: <FileText className="w-3.5 h-3.5" /> }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -232,20 +233,20 @@ export const ChinaPlaybookView: React.FC = () => {
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-1">
                   <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-mono">2</span>
-                  <span>投保“食品安全责任险 (食责险)”：商保兜底，免除后顾之忧</span>
+                  <span>投保“全球商业综合与产品责任险 (Commercial Product Liability)”：商保兜底</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400">
-                  平台与中国人保 (PICC) 或平安产险合作，为平台所有交易流转商品统一部署食责险（按年或按单保费极低，年费约 3,000–8,000 元）。若偶发非故意食安争议或消费者身体不适，由保险公司先行勘验理赔（单次事故保障额度 50–100 万元）。
+                  平台与 Allianz (安联)、Chubb (丘博) 或 AXA 等国际顶尖商业财险机构对接，为平台流转所有常温标品统一部署产品责任与污染保险。若偶发非故意食安争议，由保险机构快速勘验理赔（单次事故保障额度 100 万至 200 万美元）。
                 </p>
               </div>
 
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                 <div className="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-1">
                   <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-mono">3</span>
-                  <span>严格遵守《临期食品界定标准》：合法临期，系统严禁销售过期品</span>
+                  <span>遵循国际法典标准与《好撒玛利亚人法》(Good Samaritan Acts)</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400">
-                  国家市场监管总局有明文规定临期界定范围（如 1 年以上保质期商品，剩余 30–60 天即进入临期区间）。系统设置绝对防错逻辑：<strong>一旦超过保质期 0 秒，系统立刻自动物理下架并锁定，杜绝任何超期销售可能</strong>。
+                  严格区分“最佳赏味期 (Best-Before)”与“安全保质期 (Use-By)”。美国《比尔·埃默森好撒玛利亚人法案》及欧盟《食品再分发指引》明确对非故意的余量食品转让提供全面民事侵权责任豁免。系统设置绝对防错逻辑：<strong>一旦超过官方保质期 0 秒，系统立刻自动物理下架并锁定，杜绝任何超期销售可能</strong>。
                 </p>
               </div>
 
@@ -269,28 +270,28 @@ export const ChinaPlaybookView: React.FC = () => {
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <CreditCard className="w-5 h-5 text-emerald-600" />
-              <span>合作大型连锁商超与大卖场的资金结算机制与合规架构</span>
+              <span>全球大型连锁商超与跨国大卖场的资金托管分账架构</span>
             </h3>
 
             <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-3">
               <div className="font-bold text-slate-900 dark:text-white">
-                银行级托管与自动分账（彻底规避“二清”金融合规风险）:
+                国际商业银行托管与自动分账（Stripe Connect / Adyen for Platforms 架构）:
               </div>
               <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 font-mono text-[11px] space-y-2">
                 <div className="text-emerald-600 font-bold">
-                  【买家付款】 ── 100% 资金直接进入 微信支付“电商收付通” / 招商银行监管专户 (平台不触碰资金)
+                  【买家付款】 ── 100% 资金直接进入 Stripe Connect / 国际持牌信托托管专户 (平台零资金沉淀)
                 </div>
                 <div className="text-slate-600 dark:text-slate-400 pl-4">
-                  │  （买家前往超市卸货码头 / 服务台，店员扫码完成核销指令）
+                  │  （买家前往商超后门卸货码头 / 服务台，店员扫码验证完成核销指令）
                 </div>
                 <div className="text-slate-800 dark:text-slate-200 pl-4">
-                  ├── 85% 货款 ──&gt; 自动清算至【商超企业对公商户号】 (T+1 自动划拨至商超对公账户)
+                  ├── 85% 货款 ──&gt; 自动清算至【商超企业商业银行账户】 (T+1/T+2 自动划拨)
                 </div>
                 <div className="text-slate-800 dark:text-slate-200 pl-4">
-                  ├── 15% 佣金 ──&gt; 自动清算至【FOOD4U 平台运营主体账户】 (平台出具 6% 技术服务费发票)
+                  ├── 15% 佣金 ──&gt; 自动清算至【FOOD4U 平台运营主体账户】 (出具正规技术服务发票与 Invoice)
                 </div>
                 <div className="text-slate-800 dark:text-slate-200 pl-4">
-                  └── 0.6% 手续费 ──&gt; 扣除微信/银行支付通道费
+                  └── 2.9% 手续费 ──&gt; 扣除国际卡组织 / 银行支付网关标准手续费
                 </div>
               </div>
             </div>
@@ -299,14 +300,14 @@ export const ChinaPlaybookView: React.FC = () => {
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
                 <span className="font-bold text-slate-900 dark:text-white">与超市财务 POS / ERP 的配合:</span>
                 <p className="text-slate-500 leading-relaxed">
-                  <strong>不改动商超前台收银机</strong>：货品张贴专属救食标签，通过后仓手机端核销，不在普通收银台过机，彻底杜绝串码风险。
+                  <strong>不改动商超前台现有收银系统</strong>：货品张贴专属救食标签，通过后仓手机端核销，不在普通收银台过机，彻底杜绝串码与串货风险。
                 </p>
               </div>
 
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
                 <span className="font-bold text-slate-900 dark:text-white">每日自动对账冲抵报损:</span>
                 <p className="text-slate-500 leading-relaxed">
-                  平台每晚 21:00 自动生成商超内部格式的对账单 (Reconciliation CSV)，包含商超内部 SKU、批号与核销流水号，财务可直接导入金蝶/用友/SAP 抵扣盘亏报损。
+                  平台每晚 21:00 自动生成商超内部通用格式的对账单 (Reconciliation CSV)，包含商超内部 SKU、批号与核销流水号，财务可直接导入 SAP、Oracle NetSuite、Microsoft Dynamics 抵扣盘亏报损。
                 </p>
               </div>
             </div>
@@ -320,49 +321,49 @@ export const ChinaPlaybookView: React.FC = () => {
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Scale className="w-5 h-5 text-emerald-600" />
-              <span>国内开展本业务必须取得的牌照“四件套”</span>
+              <span>全球开展本业务标准合规资质“四件套”</span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 dark:text-white text-sm">1. 《营业执照》</span>
+                  <span className="font-bold text-slate-900 dark:text-white text-sm">1. 企业法人商业注册 (Corporate Entity)</span>
                   <span className="text-emerald-600 font-semibold text-[11px]">基础资质</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed">
-                  <strong>经营范围必须包含</strong>：互联网销售、食品互联网销售、企业管理咨询、供应链管理服务、软件开发。
+                  <strong>经营范畴必须包含</strong>：电子商务运营、供应链管理技术服务、食品批发流通居间、企业管理咨询与软件服务 (LLC / C-Corp / Ltd.)。
                 </p>
               </div>
 
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 dark:text-white text-sm">2. 《预包装食品销售备案》</span>
-                  <span className="text-emerald-600 font-semibold text-[11px]">极简线上办理</span>
+                  <span className="font-bold text-slate-900 dark:text-white text-sm">2. 预包装食品设施经营备案 (Food Facility Registration)</span>
+                  <span className="text-emerald-600 font-semibold text-[11px]">线上合规备案</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed">
-                  自 2021 年起，国家对仅销售预包装食品由“许可制”调整为“备案制”。直接在所在地市场监督管理局官网提交，<strong>1–2 个工作日</strong>即可在线取得备案编号。
+                  按照当地食品安全监管标准（如美国 FDA Food Facility Registration、欧洲 EFSA、英国 FSA），仅经营密封常温标品无须实体仓储审核，通常在线提交 1–3 个工作日即可取得注册编号。
                 </p>
               </div>
 
               <div className="p-4 bg-emerald-50 dark:bg-emerald-950/20 rounded-xl border border-emerald-200 dark:border-emerald-800/50 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-emerald-900 dark:text-emerald-300 text-sm">
-                    3. 《EDI 许可证》 (重中之重！)
+                    3. 平台型撮合电商服务条款 (Marketplace Platform Terms)
                   </span>
-                  <span className="text-emerald-700 dark:text-emerald-400 font-bold text-[11px]">合规核心</span>
+                  <span className="text-emerald-700 dark:text-emerald-400 font-bold text-[11px]">权责清晰</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  即<strong>增值电信业务经营许可证（B21 在线数据处理与交易处理业务）</strong>。由于平台涉及超市与买家多方撮合交易，向各省通信管理局申请，微信小程序上线“电商平台”类目必须提供此证（代办周期约 20–40 工作日）。
+                  平台明确作为信息技术居间撮合方（Marketplace Facilitator），买卖合同直接存在于商超与买家之间，资金通过受监管的 Stripe / Adyen 独立清算通道流转，杜绝法律连带责任。
                 </p>
               </div>
 
               <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 dark:text-white text-sm">4. 微信公众平台类目审核</span>
-                  <span className="text-slate-500 text-[11px]">终端上线</span>
+                  <span className="font-bold text-slate-900 dark:text-white text-sm">4. 全球商业综合责任与产品险 (General Liability Policy)</span>
+                  <span className="text-slate-500 text-[11px]">风险兜底</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed">
-                  小程序选择“电商平台”或“食品专营”类目，上传上述《营业执照》+《预包装食品备案》+《EDI 许可证》即可顺利过审发布。
+                  保单包含第三方产品意外责任与污染保险，为合作商超提供免责担保凭证 (Certificate of Insurance)，让大卖场法务与风险管理部门能够 100% 放心准入。
                 </p>
               </div>
             </div>

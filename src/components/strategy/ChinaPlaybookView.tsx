@@ -13,13 +13,27 @@ import {
   Users,
   Compass,
   DollarSign,
-  Scale
+  Scale,
+  BookOpen,
+  Globe,
+  Terminal,
+  Copy,
+  Check,
+  ExternalLink
 } from 'lucide-react';
 
 export const ChinaPlaybookView: React.FC = () => {
   const { currency, formatPrice } = useApp();
 
-  const [activeTab, setActiveTab] = useState<'risk' | 'settlement' | 'licenses' | 'growth' | 'b2b_strategy' | 'term_sheet'>('b2b_strategy');
+  const [activeTab, setActiveTab] = useState<'risk' | 'settlement' | 'licenses' | 'growth' | 'b2b_strategy' | 'term_sheet' | 'readme_view'>('b2b_strategy');
+  const [readmeLang, setReadmeLang] = useState<'en' | 'cn'>('en'); // Defaults to English
+  const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedSnippet(id);
+    setTimeout(() => setCopiedSnippet(null), 2000);
+  };
 
   // Term Sheet copy / download
   const termSheetText = `====================================================================
@@ -82,6 +96,13 @@ export const ChinaPlaybookView: React.FC = () => {
                 : 'Global Operational Playbook: Economics, Licensing, Risk & Multi-Currency Settlement'}
             </h2>
           </div>
+          <button
+            onClick={() => setActiveTab('readme_view')}
+            className="flex items-center gap-2 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs shrink-0 self-start sm:self-center"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>📖 项目 Readme 文档 (默认 EN / 点击切 CN)</span>
+          </button>
         </div>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl">
           针对全球大型连锁商超合作准入、欧美《好撒玛利亚人法案》(Good Samaritan Acts) 责任豁免、Stripe Connect / Adyen 银行级资金分账托管、跨国食品责任险，以及第一阶段为什么必须以 B2B 餐饮大宗为突破口提供完整实施指南。
@@ -95,7 +116,8 @@ export const ChinaPlaybookView: React.FC = () => {
             { id: 'settlement', label: '3. 全球大卖场银行托管分账', icon: <CreditCard className="w-3.5 h-3.5" /> },
             { id: 'licenses', label: '4. 国际展业合规资质四件套', icon: <Scale className="w-3.5 h-3.5" /> },
             { id: 'growth', label: '5. 低成本宣传与全球获客打法', icon: <Compass className="w-3.5 h-3.5" /> },
-            { id: 'term_sheet', label: '6. 全球商超试点协议 (Global MOU)', icon: <FileText className="w-3.5 h-3.5" /> }
+            { id: 'term_sheet', label: '6. 全球商超试点协议 (Global MOU)', icon: <FileText className="w-3.5 h-3.5" /> },
+            { id: 'readme_view', label: '7. 📖 开源 Readme (EN/CN 切换)', icon: <BookOpen className="w-3.5 h-3.5 text-emerald-500" /> }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -460,6 +482,384 @@ export const ChinaPlaybookView: React.FC = () => {
             <pre className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto">
               {termSheetText}
             </pre>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 7: In-App Interactive Readme with Default English and 1-Click CN/EN Switch */}
+      {activeTab === 'readme_view' && (
+        <div className="space-y-6 animate-fadeIn">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-6">
+            
+            {/* Header with CN / EN Switcher Bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-slate-200 dark:border-slate-800">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">
+                    {readmeLang === 'en'
+                      ? 'FOOD4U · Open Source Documentation (README)'
+                      : 'FOOD4U · 开源全景项目说明文档 (README)'}
+                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-bold">
+                    v1.0.0
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500">
+                  {readmeLang === 'en'
+                    ? '100% in-app interactive reader. Default: English (README_EN.md). Click below to toggle Chinese (README.md).'
+                    : '应用内全功能交互式文档。默认英文版，点击可随时中英双向无缝切换，无需跳转 GitHub 仓库。'}
+                </p>
+              </div>
+
+              {/* Direct CN / EN Switch Buttons */}
+              <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 self-start sm:self-auto shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setReadmeLang('en')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                    readmeLang === 'en'
+                      ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-400 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="English Readme (Default)"
+                >
+                  <span>🇺🇸 English (Default)</span>
+                  <span className="text-[10px] opacity-75 font-mono">EN</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setReadmeLang('cn')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                    readmeLang === 'cn'
+                      ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-400 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="切换至中文说明"
+                >
+                  <span>🇨🇳 中文说明</span>
+                  <span className="text-[10px] opacity-75 font-mono">CN</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Command Bar */}
+            <div className="p-3.5 bg-slate-950 text-slate-100 rounded-xl border border-slate-800 text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-slate-400">git clone:</span>
+                <span className="text-emerald-300 font-semibold truncate">git clone https://github.com/your-org/FOOD4U.git</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => copyToClipboard('git clone https://github.com/your-org/FOOD4U.git && cd FOOD4U && npm install && npm run dev', 'clone_cmd')}
+                className="flex items-center gap-1 px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded transition-colors shrink-0"
+              >
+                {copiedSnippet === 'clone_cmd' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedSnippet === 'clone_cmd' ? '已复制 Copied' : '复制命令 Copy'}</span>
+              </button>
+            </div>
+
+            {/* ========================================================= */}
+            {/* ENGLISH VERSION (README_EN.md - DEFAULT) */}
+            {/* ========================================================= */}
+            {readmeLang === 'en' ? (
+              <div className="space-y-6 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                {/* Language Switch Callout */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl">
+                  <div className="flex items-center gap-2 text-emerald-900 dark:text-emerald-200 text-xs">
+                    <Globe className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <span>Viewing <strong>English Documentation (README_EN.md - Default)</strong>. Need Chinese?</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setReadmeLang('cn')}
+                    className="px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 rounded-lg hover:bg-emerald-100 dark:hover:bg-slate-700 transition-colors shadow-xs flex items-center gap-1.5 shrink-0"
+                  >
+                    <span>🇨🇳 切换至中文说明 (Switch to Chinese)</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </button>
+                </div>
+
+                {/* Badges Bar */}
+                <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+                  <span className="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded font-mono text-xs font-bold">
+                    License: MIT
+                  </span>
+                  <span className="px-2.5 py-1 bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 rounded font-mono text-xs font-bold">
+                    React 19.0
+                  </span>
+                  <span className="px-2.5 py-1 bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 rounded font-mono text-xs font-bold">
+                    Tailwind CSS v4
+                  </span>
+                  <span className="px-2.5 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 rounded font-mono text-xs font-bold">
+                    TypeScript 5+
+                  </span>
+                  <span className="px-2.5 py-1 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 rounded font-mono text-xs font-bold">
+                    AI Agent · Active Matching
+                  </span>
+                </div>
+
+                {/* Section 1 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-emerald-600" />
+                    <span>1. Global Vision & Background (UN SDG 12.3)</span>
+                  </h4>
+                  <p>
+                    Food waste is an escalating global crisis. Under the macro-mandate of <strong>UN Sustainable Development Goal 12.3</strong> (halving global per capita food waste by 2030), supermarkets across North America, Europe, and Asia-Pacific face chronic inventory bottlenecks: <strong>shelf-stable goods reaching 30–60 day Best-Before cutoffs</strong>.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">Erosion of Gross Margin</div>
+                      <p className="text-slate-500 text-xs">Sluggish markdown workflows force grocers to take massive write-offs and pay landfill dumping fees, eroding billions in operating margins.</p>
+                    </div>
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">Heavy-Asset Limitations</div>
+                      <p className="text-slate-500 text-xs">Brick-and-mortar closeout discount chains rely on centralized distribution centers, long transit times, and heavy real-estate leases.</p>
+                    </div>
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">FOOD4U Asset-Light Solution</div>
+                      <p className="text-slate-500 text-xs">Morning handheld barcode audit + AI Agent matching + direct loading-dock handoff. Zero warehouse overhead, zero inventory risk.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    2. Core Functional Modules
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🏬 Store Operations & Morning Sweep (07:00–08:30)</div>
+                      <p className="text-xs text-slate-500 mt-0.5">High-speed handheld scanning of GTIN barcodes, automated countdown decay curves, and batch anti-cashier Rescue Stickers.</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🛒 B2B / B2C Dual-Track Marketplace</div>
+                      <p className="text-xs text-slate-500 mt-0.5">Wholesale cases (5–50 units) for commercial buyers via loading-dock pickup; consumer packs for walk-in shoppers at the customer counter.</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🤖 FOOD4U Proactive AI Matching Agent</div>
+                      <p className="text-xs text-slate-500 mt-0.5">Models downstream kitchen ingredient depletion cycles, forecasts stockouts 24–48h in advance, and pre-locks inventory via 10-minute hold carts.</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">📈 Financial Analytics & ESG Verification</div>
+                      <p className="text-xs text-slate-500 mt-0.5">Real-time GMV, 15% platform commission accounting, retailer gross margin salvage, and certified CO₂e/water savings metrics.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    3. Production Database Architecture (PostgreSQL Schema)
+                  </h4>
+                  <p className="text-xs text-slate-500">
+                    The platform is modeled around 5 core relational tables supporting full ACID transactions, multi-currency settlement, and verifiable inventory audit trails:
+                  </p>
+                  <pre className="p-3.5 bg-slate-950 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">
+{`-- 1. Pilot Stores
+CREATE TABLE stores (
+  id VARCHAR(64) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(500) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  dock_operating_hours VARCHAR(100) DEFAULT '07:30 - 09:30'
+);
+
+-- 2. Surplus Inventory Batches
+CREATE TABLE surplus_batches (
+  id VARCHAR(64) PRIMARY KEY,
+  store_id VARCHAR(64) REFERENCES stores(id),
+  product_name VARCHAR(255) NOT NULL,
+  category VARCHAR(64) NOT NULL,
+  original_price DECIMAL(10, 2) NOT NULL,
+  rescue_price DECIMAL(10, 2) NOT NULL,
+  stock_quantity INT NOT NULL,
+  expiry_date DATE NOT NULL,
+  min_order_qty INT DEFAULT 1,
+  dock_pickup_eligible BOOLEAN DEFAULT true
+);
+
+-- 3. Commercial Orders & Escrow Tokens
+CREATE TABLE orders (
+  id VARCHAR(64) PRIMARY KEY,
+  buyer_name VARCHAR(255) NOT NULL,
+  buyer_type VARCHAR(32) NOT NULL, -- 'b2b' | 'b2c'
+  total_amount DECIMAL(10, 2) NOT NULL,
+  pickup_token VARCHAR(32) UNIQUE NOT NULL,
+  status VARCHAR(32) DEFAULT 'pending_pickup',
+  payment_escrow_status VARCHAR(32) DEFAULT 'held_in_escrow'
+);`}
+                  </pre>
+                </div>
+
+                {/* Section 4 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    4. Quick Start Developer Guide
+                  </h4>
+                  <div className="p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs space-y-2 border border-slate-800">
+                    <div className="text-slate-500"># 1. Clone repository and install dependencies</div>
+                    <div className="text-emerald-400">git clone https://github.com/your-org/FOOD4U.git</div>
+                    <div>cd FOOD4U && npm install</div>
+                    <div className="text-slate-500 pt-2"># 2. Launch Vite development server on port 3000</div>
+                    <div className="text-emerald-400">npm run dev</div>
+                    <div className="text-slate-500 pt-2"># 3. Generate 8-slide Investor Pitch Deck (.pptx)</div>
+                    <div className="text-emerald-400">npx tsx scripts/generate_pitch_deck.ts</div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ========================================================= */
+              /* CHINESE VERSION (README.md) */
+              /* ========================================================= */
+              <div className="space-y-6 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                {/* Language Switch Callout */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-xl">
+                  <div className="flex items-center gap-2 text-blue-900 dark:text-blue-200 text-xs">
+                    <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <span>当前正浏览 <strong>中文版说明 (README.md)</strong>。系统页面默认展示英文版。</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setReadmeLang('en')}
+                    className="px-3 py-1.5 text-xs font-bold bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-700 rounded-lg hover:bg-blue-100 dark:hover:bg-slate-700 transition-colors shadow-xs flex items-center gap-1.5 shrink-0"
+                  >
+                    <span>🇺🇸 Switch to English Readme (Default)</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </button>
+                </div>
+
+                {/* Badges Bar */}
+                <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+                  <span className="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded font-mono text-xs font-bold">
+                    开源协议: MIT License
+                  </span>
+                  <span className="px-2.5 py-1 bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 rounded font-mono text-xs font-bold">
+                    React 19.0
+                  </span>
+                  <span className="px-2.5 py-1 bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 rounded font-mono text-xs font-bold">
+                    Tailwind CSS v4
+                  </span>
+                  <span className="px-2.5 py-1 bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 rounded font-mono text-xs font-bold">
+                    TypeScript 5+
+                  </span>
+                  <span className="px-2.5 py-1 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 rounded font-mono text-xs font-bold">
+                    AI Agent 算法主动撮合
+                  </span>
+                </div>
+
+                {/* Section 1 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-emerald-600" />
+                    <span>1. 项目愿景与全球背景 (Global Vision & Background)</span>
+                  </h4>
+                  <p>
+                    在全球食品浪费严峻挑战与联合国可持续发展目标 <strong>UN SDG 12.3（2030 年前全球人均食品浪费减半）</strong> 的宏观驱动下，全球大型连锁大卖场与商超（北美、欧洲、亚太主要零售市场）后仓常态化面临<strong>临期（剩余保质期 30–60 天 Best-Before Cutoffs）预包装商品大量积压</strong>的痛点：
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">高昂报损与填埋费</div>
+                      <p className="text-slate-500 text-xs">传统商超清仓流程缓慢，倒逼零售商不得不低价买断或支付垃圾填埋倾倒费，侵蚀数十亿美元毛利。</p>
+                    </div>
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">重资产折扣店瓶颈</div>
+                      <p className="text-slate-500 text-xs">线下硬折扣店走买断货权、自建大仓与二次物流转运模式，履约周转链条长、固定租金占比过重。</p>
+                    </div>
+                    <div className="p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1">FOOD4U 轻资产破局</div>
+                      <p className="text-slate-500 text-xs">聚焦大宗整箱标的，商超早巡扫码 + AI Agent 消耗周期预测，买家直接前往后门货运装卸码头自提，0 仓储 0 库存风险。</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 2 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    2. 核心功能模块 (Core Modules)
+                  </h4>
+                  <div className="space-y-2">
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🏬 门店早巡扫码工作台 (Store Operations)</div>
+                      <p className="text-xs text-slate-500 mt-0.5">晨间 07:00–08:30 标准 SOP，手持端极速录入 GTIN 条形码，动态阶梯折价与批次防串货贴标。</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🛒 B2B / B2C 双轨提货集市 (Buyer Marketplace)</div>
+                      <p className="text-xs text-slate-500 mt-0.5">面向餐饮中央厨房的 5–50 箱大宗码头提货通道；面向散客的总服务台自提通道。</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">🤖 FOOD4U AI 智能预测撮合 (AI Match Agent)</div>
+                      <p className="text-xs text-slate-500 mt-0.5">基于下游商户消耗速度建模，提前 24–48 小时预测缺货，10 分钟锁库存定向推送与自动化撮合。</p>
+                    </div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="font-bold text-xs text-slate-900 dark:text-white">📈 财务结算与碳资产看板 (Economics & ESG)</div>
+                      <p className="text-xs text-slate-500 mt-0.5">实时 GMV、15% 平台抽佣、商超挽回毛利与权威碳减排（CO₂e / 节水升数）实时量化。</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Section 3 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    3. 生产级技术架构与数据库模型 (PostgreSQL SQL)
+                  </h4>
+                  <p className="text-xs text-slate-500">
+                    采用 5 大核心业务表驱动，完全兼容 PostgreSQL / Supabase，具备完整的事务一致性与资金分账隔离：
+                  </p>
+                  <pre className="p-3.5 bg-slate-950 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">
+{`-- 1. 试点商超门店表
+CREATE TABLE stores (
+  id VARCHAR(64) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(500) NOT NULL,
+  dock_operating_hours VARCHAR(100) DEFAULT '07:30 - 09:30'
+);
+
+-- 2. 临期批次库存表
+CREATE TABLE surplus_batches (
+  id VARCHAR(64) PRIMARY KEY,
+  store_id VARCHAR(64) REFERENCES stores(id),
+  product_name VARCHAR(255) NOT NULL,
+  original_price DECIMAL(10, 2) NOT NULL,
+  rescue_price DECIMAL(10, 2) NOT NULL,
+  stock_quantity INT NOT NULL,
+  expiry_date DATE NOT NULL,
+  dock_pickup_eligible BOOLEAN DEFAULT true
+);
+
+-- 3. 商业订单与提货码表
+CREATE TABLE orders (
+  id VARCHAR(64) PRIMARY KEY,
+  buyer_name VARCHAR(255) NOT NULL,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  pickup_token VARCHAR(32) UNIQUE NOT NULL,
+  payment_escrow_status VARCHAR(32) DEFAULT 'held_in_escrow'
+);`}
+                  </pre>
+                </div>
+
+                {/* Section 4 */}
+                <div className="space-y-3">
+                  <h4 className="text-base font-black text-slate-900 dark:text-white">
+                    4. 快速开始 (Quick Start)
+                  </h4>
+                  <div className="p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs space-y-2 border border-slate-800">
+                    <div className="text-slate-500"># 1. 克隆代码仓库并安装依赖</div>
+                    <div className="text-emerald-400">git clone https://github.com/your-org/FOOD4U.git</div>
+                    <div>cd FOOD4U && npm install</div>
+                    <div className="text-slate-500 pt-2"># 2. 启动开发服务 (访问 http://localhost:3000)</div>
+                    <div className="text-emerald-400">npm run dev</div>
+                    <div className="text-slate-500 pt-2"># 3. 生成 8 页投资人演示文稿 PPTX</div>
+                    <div className="text-emerald-400">npx tsx scripts/generate_pitch_deck.ts</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

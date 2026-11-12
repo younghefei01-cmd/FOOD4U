@@ -7,12 +7,14 @@ import { AnalyticsView } from './components/analytics/AnalyticsView';
 import { ChinaPlaybookView } from './components/strategy/ChinaPlaybookView';
 import { AiMatchingAgentView } from './components/agent/AiMatchingAgentView';
 import { CartDrawer } from './components/cart/CartDrawer';
+import { DocViewerModal } from './components/docs/DocViewerModal';
 import { Order } from './types';
 
 const AppContent: React.FC = () => {
   const { activeTab, currency } = useApp();
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [activePassOrder, setActivePassOrder] = useState<Order | null>(null);
+  const [isDocOpen, setIsDocOpen] = useState<boolean>(false);
 
   const handleOrderSuccess = (order: Order) => {
     setActivePassOrder(order);
@@ -21,7 +23,10 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-emerald-500 selection:text-white">
       {/* 3-Zone Navigation Top Bar */}
-      <Navbar onOpenCart={() => setIsCartOpen(true)} />
+      <Navbar
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenDoc={() => setIsDocOpen(true)}
+      />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -43,6 +48,13 @@ const AppContent: React.FC = () => {
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         onOrderSuccess={handleOrderSuccess}
+      />
+
+      {/* Interactive Open-Source Readme Viewer Modal (Defaults to English, 1-click CN/EN toggle) */}
+      <DocViewerModal
+        isOpen={isDocOpen}
+        onClose={() => setIsDocOpen(false)}
+        initialLang="en"
       />
 
       {/* Clean Utility Footer */}

@@ -14,9 +14,10 @@ import {
 
 interface NavbarProps {
   onOpenCart: () => void;
+  onOpenDoc?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenCart, onOpenDoc }) => {
   const {
     stores,
     currentStoreId,
@@ -121,31 +122,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCart }) => {
 
           {/* Zone 3: Primary Actions & Quick Controls */}
           <div className="flex items-center gap-2.5 shrink-0">
-            {/* Currency Toggle */}
+            {/* Language & Currency Toggle: EN ($) / 中文 (¥) */}
             <div className="flex items-center p-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => setCurrency('USD')}
-                className={`px-2 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1 ${
                   currency === 'USD'
                     ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
                     : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
                 }`}
-                title="Switch to US Dollar ($)"
+                title="Switch to English / USD"
               >
-                $ USD
+                <span>EN</span>
+                <span className="text-[10px] opacity-60">$</span>
               </button>
               <button
                 onClick={() => setCurrency('RMB')}
-                className={`px-2 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1 ${
                   currency === 'RMB'
                     ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-400 shadow-xs'
                     : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
                 }`}
-                title="切换至人民币 (¥)"
+                title="切换至中文 / 人民币"
               >
-                ¥ RMB
+                <span>中文</span>
+                <span className="text-[10px] opacity-60">¥</span>
               </button>
             </div>
+
+            {/* Readme Documentation Button (EN / CN) */}
+            {onOpenDoc && (
+              <button
+                onClick={onOpenDoc}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors"
+                title="View Readme Docs (Default EN, Click for CN)"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="hidden sm:inline">Readme</span>
+                <span className="text-[10px] font-mono px-1 py-0.2 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded font-bold">
+                  EN/CN
+                </span>
+              </button>
+            )}
 
             {/* Store Location Selector */}
             <div className="relative">

@@ -2,14 +2,18 @@
 
 <div align="center">
 
-[![English](https://img.shields.io/badge/Language-English-blue.svg)](./README_EN.md)
-[![简体中文](https://img.shields.io/badge/Language-简体中文-emerald.svg)](./README.md)
-![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)
-![React](https://img.shields.io/badge/React-19.0-blue.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-v4.0-38bdf8.svg)
-![Vite](https://img.shields.io/badge/Vite-6.0+-646cff.svg)
-![AI-Powered](https://img.shields.io/badge/AI%20Agent-Dynamic%20Matching-amber.svg)
+[![English](https://img.shields.io/badge/Language-English%20(Default)-blue.svg?style=for-the-badge)](./README_EN.md)
+[![简体中文](https://img.shields.io/badge/说明-简体中文版-emerald.svg?style=for-the-badge)](./README.md)
+![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19.0-blue.svg?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg?style=for-the-badge)
+
+<p align="center">
+  🌐 <strong>Language / 语言切换:</strong> 
+  <a href="./README_EN.md"><strong>🇺🇸 Readme in English (Default / 默认英文版)</strong></a>
+  &nbsp;|&nbsp;
+  <strong>🇨🇳 简体中文版说明 (当前)</strong>
+</p>
 
 **以轻资产、零库存风险模式连接大中型商超后仓与 B2B 商业买家（餐饮、烘焙、团餐），结合 AI Agent 智能预测与码头核销自提，实现食品损耗归零与绿色价值闭环。**
 

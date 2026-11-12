@@ -2,6 +2,8 @@
 
 <div align="center">
 
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](./README_EN.md)
+[![简体中文](https://img.shields.io/badge/Language-简体中文-emerald.svg)](./README.md)
 ![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)
 ![React](https://img.shields.io/badge/React-19.0-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)

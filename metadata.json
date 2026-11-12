@@ -1,0 +1,6 @@
+{
+  "name": "RescueShelf - Supermarket Surplus & Commercial Clearance Platform",
+  "description": "Commercial clearance and surplus food rescue platform connecting supermarkets with B2B commercial buyers and neighborhood shoppers to recover margin, streamline morning sweeps, and track verified ESG diversion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
